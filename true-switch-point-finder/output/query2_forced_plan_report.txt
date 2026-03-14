@@ -1,0 +1,40 @@
+FORCED PLAN REPORT — IMDB JOB Query 2
+Generated: 2026-03-14 13:11:16
+=======================================================
+
+Switch #1  at  production_year = 2012
+───────────────────────────────────────────────────────
+  Phase 1 → Phase 2
+
+  [Force Plan A at year S=2012]
+    Hint used     : /*+ SeqScan(mi) SeqScan(it) HashJoin(mi it) IndexScan(t) NestLoop(mi it t) IndexScan(ci) NestLoop(mi it t ci) IndexScan(n) NestLoop(mi it t ci n) */
+    Natural plan  : 1e7396d23b
+    Forced plan   : 1e7396d23b
+    Same as natural? ✓ match
+
+  [Force Plan B at year S-1=2011]
+    Hint used     : /*+ SeqScan(mi) SeqScan(it) HashJoin(mi it) IndexScan(t) NestLoop(mi it t) IndexScan(ci) NestLoop(mi it t ci) IndexScan(n) NestLoop(mi it t ci n) */
+    Natural plan  : 9032f14d83
+    Forced plan   : 9032f14d83
+    Same as natural? ✓ match
+
+=======================================================
+
+Switch #2  at  production_year = 2013
+───────────────────────────────────────────────────────
+  Phase 2 → Phase 3
+
+  [Force Plan A at year S=2013]
+    Hint used     : /*+ SeqScan(mi) SeqScan(it) HashJoin(mi it) IndexScan(t) NestLoop(mi it t) IndexScan(ci) NestLoop(mi it t ci) IndexScan(n) NestLoop(mi it t ci n) */
+    Natural plan  : e836503f56
+    Forced plan   : 1e7396d23b
+    Same as natural? ✗ different
+
+  [Force Plan B at year S-1=2012]
+    Hint used     : /*+ SeqScan(t) IndexScan(mi) NestLoop(t mi) SeqScan(it) HashJoin(t mi it) IndexScan(ci) NestLoop(t mi it ci) IndexScan(n) NestLoop(t mi it ci n) */
+    Natural plan  : 1e7396d23b
+    Forced plan   : e836503f56
+    Same as natural? ✗ different
+
+=======================================================
+

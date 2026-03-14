@@ -1,0 +1,12 @@
+PLAN SWITCH REPORT — IMDB JOB Query 3
+Generated: 2026-03-14 13:10:32
+==================================================
+
+Switch points found: 0
+
+Total probes: 141
+
+──────────────────────────────────────────────────
+Stable plan phases
+
+Phase 1: year 1880 → 2020  hash=e86beccee3

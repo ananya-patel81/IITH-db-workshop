@@ -1,0 +1,101 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Partial Mode": "Simple",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 153981.93,
+      "Total Cost": 153981.94,
+      "Plan Rows": 1,
+      "Plan Width": 36,
+      "Plans": [
+        {
+          "Node Type": "Nested Loop",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Join Type": "Inner",
+          "Startup Cost": 4605.62,
+          "Total Cost": 149972.43,
+          "Plan Rows": 801899,
+          "Plan Width": 21,
+          "Inner Unique": false,
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 4605.18,
+              "Total Cost": 47587.28,
+              "Plan Rows": 55896,
+              "Plan Width": 25,
+              "Inner Unique": false,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "kind_type",
+                  "Alias": "kt",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 1.09,
+                  "Plan Rows": 1,
+                  "Plan Width": 4,
+                  "Filter": "((kind)::text = 'movie'::text)"
+                },
+                {
+                  "Node Type": "Bitmap Heap Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "title",
+                  "Alias": "t",
+                  "Startup Cost": 4605.18,
+                  "Total Cost": 46934.08,
+                  "Plan Rows": 65212,
+                  "Plan Width": 29,
+                  "Recheck Cond": "(kt.id = kind_id)",
+                  "Filter": "(production_year > 2010)",
+                  "Plans": [
+                    {
+                      "Node Type": "Bitmap Index Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Index Name": "kind_id_title",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 4588.88,
+                      "Plan Rows": 421393,
+                      "Plan Width": 0,
+                      "Index Cond": "(kind_id = kt.id)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Node Type": "Index Only Scan",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "movie_id_cast_info",
+              "Relation Name": "cast_info",
+              "Alias": "ci",
+              "Startup Cost": 0.44,
+              "Total Cost": 1.46,
+              "Plan Rows": 37,
+              "Plan Width": 4,
+              "Index Cond": "(movie_id = t.id)"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

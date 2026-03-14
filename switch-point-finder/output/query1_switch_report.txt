@@ -1,0 +1,26 @@
+PLAN SWITCH REPORT — IMDB JOB Query (title + cast_info + kind_type)
+Generated: 2026-03-14 13:07:52
+==================================================
+
+Switch points found: 2
+
+Switch #1
+  Year          : 2005
+  From hash     : 2d2a427a9c3a0162757dff75e99a4423
+  To hash       : c2b81d1f3ee821fedafff08bfd7c8959
+  Binary-search : 0 probes
+
+Switch #2
+  Year          : 2011
+  From hash     : c2b81d1f3ee821fedafff08bfd7c8959
+  To hash       : 49d761afc71f39cdfa00bafd8197d7ee
+  Binary-search : 0 probes
+
+Total probes: 141
+
+──────────────────────────────────────────────────
+Stable plan phases
+
+Phase 1: year 1880 → 2004  hash=2d2a427a9c
+Phase 2: year 2005 → 2010  hash=c2b81d1f3e
+Phase 3: year 2011 → 2020  hash=49d761afc7

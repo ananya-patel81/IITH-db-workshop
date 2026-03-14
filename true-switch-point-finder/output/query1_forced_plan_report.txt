@@ -1,0 +1,40 @@
+FORCED PLAN REPORT — IMDB JOB Query (title + cast_info + kind_type)
+Generated: 2026-03-14 13:11:07
+=======================================================
+
+Switch #1  at  production_year = 2005
+───────────────────────────────────────────────────────
+  Phase 1 → Phase 2
+
+  [Force Plan A at year S=2005]
+    Hint used     : /*+ SeqScan(t) SeqScan(kt) HashJoin(t kt) IndexOnlyScan(ci) NestLoop(t kt ci) */
+    Natural plan  : c2b81d1f3e
+    Forced plan   : 2d2a427a9c
+    Same as natural? ✗ different
+
+  [Force Plan B at year S-1=2004]
+    Hint used     : /*+ IndexScan(t) IndexScan(kt) NestLoop(t kt) IndexOnlyScan(ci) NestLoop(t kt ci) */
+    Natural plan  : 2d2a427a9c
+    Forced plan   : c2b81d1f3e
+    Same as natural? ✗ different
+
+=======================================================
+
+Switch #2  at  production_year = 2011
+───────────────────────────────────────────────────────
+  Phase 2 → Phase 3
+
+  [Force Plan A at year S=2011]
+    Hint used     : /*+ IndexScan(t) IndexScan(kt) NestLoop(t kt) IndexOnlyScan(ci) NestLoop(t kt ci) */
+    Natural plan  : 49d761afc7
+    Forced plan   : c2b81d1f3e
+    Same as natural? ✗ different
+
+  [Force Plan B at year S-1=2010]
+    Hint used     : /*+ SeqScan(kt) BitmapScan(t) NestLoop(kt t) IndexOnlyScan(ci) NestLoop(kt t ci) */
+    Natural plan  : c2b81d1f3e
+    Forced plan   : 49d761afc7
+    Same as natural? ✗ different
+
+=======================================================
+
